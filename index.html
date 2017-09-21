@@ -1,0 +1,42 @@
+<h2>jq-bls</h2>
+
+<p>The U.S. Bureau of Labor Statistics publishes all sorts of 
+time series data about the economy accessible as JSON.</p>
+
+<p>Jq is functional, stream based JSON manipulator using 
+query strings by Stephen Dolan and is amazing.</p>
+
+<h2>Oveview</h2>
+
+<p>Observe: you will need to have curl and jq installed.
+Orientate: get to BLS Data finder page
+Decide: pick a series
+Act: pipe curl into jq and play around with jq filter strings</p>
+
+<h2>Example: Testing the pipes</h2>
+
+<p>Lets say we want the series named :All items in U.S. city average, 
+all urban consumers, not seasonally adjusted.  We need the 
+series ID: CUUR0000SA0</p>
+
+<p>curl https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0 \
+ | jq .</p>
+
+<h2>Example: Grabing JSON for later (bcz of bls.gov data limits)</h2>
+
+<p>curl https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0 > \
+CUUR000000SAO.json</p>
+
+<h2>Example: using JSON file just like a curl stream </h2>
+
+<p>cat CUUR000000SAO.json | jq .</p>
+
+<h2>Example: Filter data for x/y graph </h2>
+
+<p>cat CUUR0000SA0.json | jq '.Results.series[].data[] | {year, period, value}'</p>
+
+<h2>Links</h2>
+
+<p><a href="https://www.bls.gov/data/">Data Tools Entry Point at BLS</a>
+<a href="http://stedolan.net/">Stephen Dolan</a>
+<a href="https://www.bls.gov/cpi/overview.htm">CPI Overview</a></p>
