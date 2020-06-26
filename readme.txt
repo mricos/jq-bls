@@ -40,5 +40,7 @@ cat CUUR0000SA0.json | jq '.Results.series[].data[] | {year, period, value}'
 Links
 ---
 [Data Tools Entry Point at BLS](https://www.bls.gov/data/)
+
 [Stephen Dolan](http://stedolan.net/)
+
 [CPI Overview](https://www.bls.gov/cpi/overview.htm)
